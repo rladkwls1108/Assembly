@@ -57,14 +57,5 @@
 
 ---
 
-## 7. Review Questions & Exercises
-### 발표/과제 주제 예시
-- Motherboard
-- CPU & GPU
-- Main memory & SSD
-- Keyboard, Mouse, Monitor
-- PC building
-
----
 
 
