@@ -1,11 +1,11 @@
-# 5.8.2 Algorithm Workbench
+# **5.8.2 Algorithm Workbench**
 
 ---
 
-### 1. Write a sequence of statements that use only PUSH and POP instructions to exchange the
-values in the EAX and EBX registers (or RAX and RBX in 64-bit mode).
+### **1. Write a sequence of statements that use only PUSH and POP instructions to exchange the values in the EAX and EBX registers (or RAX and RBX in 64-bit mode).**
 
 **정답 (PUSH/POP만 사용한 교환):**
+
 ```asm
 ; 32-bit
 push eax
@@ -18,14 +18,11 @@ push rax
 push rbx
 pop  rax        ; rax ← (old rbx)
 pop  rbx        ; rbx ← (old rax)
-````
+```
 
 ---
 
-### 2. Suppose you wanted a subroutine to return to an address that was 3 bytes higher in memory
-
-than the return address currently on the stack. Write a sequence of instructions that would be
-inserted just before the subroutine’s RET instruction that accomplish this task.
+### **2. Suppose you wanted a subroutine to return to an address that was 3 bytes higher in memory than the return address currently on the stack. Write a sequence of instructions that would be inserted just before the subroutine’s RET instruction that accomplish this task.**
 
 **정답 (스택의 반환 주소를 +3 증가):**
 
@@ -41,11 +38,7 @@ ret
 
 ---
 
-### 3. Functions in high-level languages often declare local variables just below the return address
-
-on the stack. Write an instruction that you could put at the beginning of an assembly language
-subroutine that would reserve space for two integer doubleword variables. Then, assign the
-values 1000h and 2000h to the two local variables.
+### **3. Functions in high-level languages often declare local variables just below the return address on the stack. Write an instruction that you could put at the beginning of an assembly language subroutine that would reserve space for two integer doubleword variables. Then, assign the values 1000h and 2000h to the two local variables.**
 
 **정답 (두 개의 로컬 DWORD 확보 및 초기화):**
 
@@ -64,9 +57,7 @@ mov  dword ptr [rsp+4],2000h
 
 ---
 
-### 4. Write a sequence of statements using indexed addressing that copies an element in a double
-
-word array to the previous position in the same array.
+### **4. Write a sequence of statements using indexed addressing that copies an element in a doubleword array to the previous position in the same array.**
 
 **정답 (더블워드 배열의 i번째 요소를 i-1번째로 복사):**
 
@@ -91,10 +82,7 @@ mov   [array + edx*4], eax  ; array[i-1] ← eax
 
 ---
 
-### 5. Write a sequence of statements that display a subroutine’s return address. Be sure that what
-
-ever modifications you make to the stack do not prevent the subroutine from returning to its
-caller.
+### **5. Write a sequence of statements that display a subroutine’s return address. Be sure that whatever modifications you make to the stack do not prevent the subroutine from returning to its caller.**
 
 **정답 (스택을 보존하며 반환 주소를 표시):**
 
@@ -120,11 +108,10 @@ add  esp, 4             ; 인자 정리 (원본 반환 주소는 그대로 보�
 ; ...
 ret
 
-; 64-bit (시演용: 가변 규약/ABI에 맞춰 인자 전달 방식 조정)
+; 64-bit (시연용: 가변 규약/ABI에 맞춰 인자 전달 방식 조정)
 push qword ptr [rsp]    ; 반환 주소 복제
 call PrintAddr          ; 주소 표시
 add  rsp, 8             ; 정리
 ; ...
 ret
 ```
----
